@@ -1,0 +1,9 @@
+LEXGUARD MOCK PRIVACY POLICY
+
+1. LOCATION TRACKING: The Application automatically collects and transmits precise real-time geographic location data from your device at all times, including when the application is running in the background or closed. This data is utilized to deliver targeted advertising and behavioral profiling.
+
+2. THIRD-PARTY DATA SELLING: We reserve the right to rent, share, license, or sell your personal information, browsing history, and behavioral attributes to third-party data brokers, marketing agencies, and financial lending institutions without further notice or explicit consent.
+
+3. DATA RETENTION: We retain all user account data, telemetry logs, search queries, and payment history indefinitely. You waive any right to demand deletion or erasure of your records ("Right to be Forgotten") under local or international data protection regulations.
+
+4. COOKIES & SCANNING: Our services employ advanced cross-site tracking tools, web beacons, and keystroke logging techniques to monitor user activity on partner sites, developing a comprehensive commercial profile of your online habits.
