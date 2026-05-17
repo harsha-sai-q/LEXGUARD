@@ -91,6 +91,52 @@ If you want to run or deploy the backend proxy server:
 
 ---
 
+## 🧪 Manual Testing & Verification Spec
+
+To perform a full-length verification of the LexGuard scanner's capabilities, you can copy the standard high-liability mock contract below and scan it on either the Web App or the Chrome Extension:
+
+### 1. Test Contract Payload (Copy & Paste)
+```text
+TERMS OF SERVICE AND SERVICE AGREEMENT
+
+1. BINDING ARBITRATION: Any dispute, controversy or claim arising out of or relating to this contract, including its formation or breach, shall be settled by binding arbitration in accordance with the rules of the American Arbitration Association, and judgment on the award rendered by the arbitrator(s) may be entered in any court having jurisdiction thereof. YOU HEREBY WAIVE YOUR RIGHT TO A TRIAL BY JURY.
+
+2. WAIVER OF CLASS ACTION: All claims must be brought in the parties' individual capacity, and not as a plaintiff or class member in any purported class or representative proceeding.
+
+3. AUTOMATIC RENEWAL: This agreement shall automatically renew for successive terms of 12 months each at the then-current service fee rate, unless either party gives written notice of non-renewal at least 90 days prior to the expiration of the current term.
+
+4. INTELLECTUAL PROPERTY & DATA RIGHTS: You hereby grant the Company an irrevocable, perpetual, worldwide, sublicensable, royalty-free license to use, reproduce, modify, adapt, publish, translate, and distribute your user data and content for any commercial purpose whatsoever.
+```
+
+### 2. Verification Walkthrough (Step-by-Step)
+#### A. On the Web App:
+1. Navigate to **[https://lexguard-ai-mocha.vercel.app](https://lexguard-ai-mocha.vercel.app)**.
+2. Select the **"Paste Text"** tab.
+3. Paste the 4-clause contract text above into the input textarea.
+4. Click the blue **"Analyze Contract"** button.
+5. Wait ~3-5 seconds.
+
+#### B. On the Chrome Extension:
+1. Ensure the extension is loaded locally from your Chrome extensions page.
+2. Open any webpage containing legal text or open a raw file in the browser containing the text above.
+3. Click the extensions icon in the toolbar, select **LexGuard** to open the side panel.
+4. Keep the tab set to **"Zero-Setup Cloud"**.
+5. Click **"🛡️ Scan Webpage"**.
+
+---
+
+### 3. Expected Successful Output (Verification Checklist)
+* **Risk Score Index:** Should evaluate to **High Risk (75 to 90 range)**.
+* **Risk status badge:** Color-coded in crimson rose (`high` classification).
+* **Summary analysis:** Generates a 2-sentence plain English warning summarizing that you are waiving your day in court and granting perpetual ownership of your user data to the company.
+* **Granular Cards Identified:**
+  * **Clause 1 Tag:** Classified under `Arbitration`, Severity: `High`. Explains that you waive your constitutional right to a jury trial.
+  * **Clause 2 Tag:** Classified under `Arbitration` or `Compliance`, Severity: `High`. Explains you cannot join class-action lawsuits.
+  * **Clause 3 Tag:** Classified under `Financial` or `Arbitration`, Severity: `Medium`. Explains the auto-billing traps and the strict 90-day cancellation window.
+  * **Clause 4 Tag:** Classified under `IP` or `Data Collection`, Severity: `High`. Explains you lose all copyrights and ownership of the content/media you upload.
+
+---
+
 ## 🛡️ Security & API Key Protection
 Unlike generic AI extensions, LexGuard does **not** leak developer API Keys to the client-side browser in Cloud Mode. The browser interacts solely with the secure serverless backend `/api/fetch-url`. The Vercel function injects the `GEMINI_API_KEY` from your serverless dashboard environment variables, keeping your API key 100% hidden and secure from inspect-element scraping.
 
