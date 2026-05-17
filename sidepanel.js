@@ -230,30 +230,63 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Render Clause Cards
     if (clauses.length === 0) {
-      riskList.innerHTML = `
-        <div class="risk-item low" style="opacity: 1; transform: translateY(0);">
-          <div class="clause-tag-row">
-            <span class="clause-category">Compliance</span>
-            <span class="clause-severity low">Info</span>
-          </div>
-          <p class="clause-quote">"All legal clauses reviewed."</p>
-          <p class="clause-explanation">No specific high-severity legal liabilities or risks were identified in the contract text.</p>
-        </div>
-      `;
+      const noRiskCard = document.createElement('div');
+      noRiskCard.className = 'risk-item low';
+      noRiskCard.style.opacity = '1';
+      noRiskCard.style.transform = 'translateY(0)';
+      
+      const tagRow = document.createElement('div');
+      tagRow.className = 'clause-tag-row';
+      const catSpan = document.createElement('span');
+      catSpan.className = 'clause-category';
+      catSpan.textContent = 'Compliance';
+      const sevSpan = document.createElement('span');
+      sevSpan.className = 'clause-severity low';
+      sevSpan.textContent = 'Info';
+      tagRow.appendChild(catSpan);
+      tagRow.appendChild(sevSpan);
+
+      const quoteP = document.createElement('p');
+      quoteP.className = 'clause-quote';
+      quoteP.textContent = '"All legal clauses reviewed."';
+
+      const expP = document.createElement('p');
+      expP.className = 'clause-explanation';
+      expP.textContent = 'No specific high-severity legal liabilities or risks were identified in the contract text.';
+
+      noRiskCard.appendChild(tagRow);
+      noRiskCard.appendChild(quoteP);
+      noRiskCard.appendChild(expP);
+      
+      riskList.appendChild(noRiskCard);
     } else {
       clauses.forEach((clause, index) => {
         const severityClass = (clause.severity || 'low').toLowerCase();
         const card = document.createElement('div');
         card.className = `risk-item ${severityClass}`;
         
-        card.innerHTML = `
-          <div class="clause-tag-row">
-            <span class="clause-category">${escapeHtml(clause.category || 'General')}</span>
-            <span class="clause-severity ${severityClass}">${escapeHtml(clause.severity || 'Low')}</span>
-          </div>
-          <p class="clause-quote">"${escapeHtml(clause.text)}"</p>
-          <p class="clause-explanation">${escapeHtml(clause.explanation)}</p>
-        `;
+        const tagRow = document.createElement('div');
+        tagRow.className = 'clause-tag-row';
+        const catSpan = document.createElement('span');
+        catSpan.className = 'clause-category';
+        catSpan.textContent = clause.category || 'General';
+        const sevSpan = document.createElement('span');
+        sevSpan.className = `clause-severity ${severityClass}`;
+        sevSpan.textContent = clause.severity || 'Low';
+        tagRow.appendChild(catSpan);
+        tagRow.appendChild(sevSpan);
+
+        const quoteP = document.createElement('p');
+        quoteP.className = 'clause-quote';
+        quoteP.textContent = `"${clause.text}"`;
+
+        const expP = document.createElement('p');
+        expP.className = 'clause-explanation';
+        expP.textContent = clause.explanation;
+
+        card.appendChild(tagRow);
+        card.appendChild(quoteP);
+        card.appendChild(expP);
         
         riskList.appendChild(card);
         
@@ -290,16 +323,35 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   function showErrorCard(msg) {
-    riskList.innerHTML = `
-      <div class="risk-item high" style="opacity: 1; transform: translateY(0);">
-        <div class="clause-tag-row">
-          <span class="clause-category">Scanner Error</span>
-          <span class="clause-severity high">Error</span>
-        </div>
-        <p class="clause-quote">"Scanner could not process contract text."</p>
-        <p class="clause-explanation">${escapeHtml(msg)}</p>
-      </div>
-    `;
+    const errCard = document.createElement('div');
+    errCard.className = 'risk-item high';
+    errCard.style.opacity = '1';
+    errCard.style.transform = 'translateY(0)';
+    
+    const tagRow = document.createElement('div');
+    tagRow.className = 'clause-tag-row';
+    const catSpan = document.createElement('span');
+    catSpan.className = 'clause-category';
+    catSpan.textContent = 'Scanner Error';
+    const sevSpan = document.createElement('span');
+    sevSpan.className = 'clause-severity high';
+    sevSpan.textContent = 'Error';
+    tagRow.appendChild(catSpan);
+    tagRow.appendChild(sevSpan);
+
+    const quoteP = document.createElement('p');
+    quoteP.className = 'clause-quote';
+    quoteP.textContent = '"Scanner could not process contract text."';
+
+    const expP = document.createElement('p');
+    expP.className = 'clause-explanation';
+    expP.textContent = msg;
+
+    errCard.appendChild(tagRow);
+    errCard.appendChild(quoteP);
+    errCard.appendChild(expP);
+    
+    riskList.appendChild(errCard);
     riskScoreValue.textContent = 'Err';
     riskStatusBadge.textContent = 'Failed';
     riskStatusBadge.className = 'badge high';

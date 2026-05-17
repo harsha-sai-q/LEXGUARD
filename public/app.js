@@ -212,16 +212,36 @@ document.addEventListener('DOMContentLoaded', () => {
         if (severityLower === 'high') severityClass = 'badge-high';
         if (severityLower === 'medium') severityClass = 'badge-med';
 
-        card.innerHTML = `
-          <div class="clause-header">
-            <div class="clause-text">"${clause.text}"</div>
-            <div class="badges">
-              <span class="badge badge-category">${clause.category}</span>
-              <span class="badge ${severityClass}">${clause.severity}</span>
-            </div>
-          </div>
-          <div class="clause-explanation">${clause.explanation}</div>
-        `;
+        const headerDiv = document.createElement('div');
+        headerDiv.className = 'clause-header';
+
+        const textDiv = document.createElement('div');
+        textDiv.className = 'clause-text';
+        textDiv.textContent = `"${clause.text}"`;
+
+        const badgesDiv = document.createElement('div');
+        badgesDiv.className = 'badges';
+
+        const catBadge = document.createElement('span');
+        catBadge.className = 'badge badge-category';
+        catBadge.textContent = clause.category;
+
+        const sevBadge = document.createElement('span');
+        sevBadge.className = `badge ${severityClass}`;
+        sevBadge.textContent = clause.severity;
+
+        badgesDiv.appendChild(catBadge);
+        badgesDiv.appendChild(sevBadge);
+        headerDiv.appendChild(textDiv);
+        headerDiv.appendChild(badgesDiv);
+
+        const expDiv = document.createElement('div');
+        expDiv.className = 'clause-explanation';
+        expDiv.textContent = clause.explanation;
+
+        card.appendChild(headerDiv);
+        card.appendChild(expDiv);
+        
         clausesGrid.appendChild(card);
       });
     }

@@ -26,57 +26,57 @@
     </div>
   </header>
 
-  <main class="container">
+  <main class="container" role="main" aria-label="LexGuard Main Content">
 
 
     <!-- Analyzer Tabs Container -->
-    <div class="tabs-container">
+    <div class="tabs-container" role="tablist" aria-label="Analysis Methods">
       <div class="tab-buttons">
-        <button class="tab-btn active" data-target="tab-url">URL</button>
-        <button class="tab-btn" data-target="tab-pdf">PDF</button>
-        <button class="tab-btn" data-target="tab-paste">Paste Text</button>
+        <button class="tab-btn active" data-target="tab-url" role="tab" aria-selected="true" aria-controls="tab-url" id="btn-tab-url">URL</button>
+        <button class="tab-btn" data-target="tab-pdf" role="tab" aria-selected="false" aria-controls="tab-pdf" id="btn-tab-pdf">PDF</button>
+        <button class="tab-btn" data-target="tab-paste" role="tab" aria-selected="false" aria-controls="tab-paste" id="btn-tab-paste">Paste Text</button>
       </div>
 
       <div class="tab-content">
         <!-- URL Tab -->
-        <div id="tab-url" class="tab-pane active">
+        <div id="tab-url" class="tab-pane active" role="tabpanel" aria-labelledby="btn-tab-url">
           <p class="instructions">Enter the URL of a legal document (e.g., Privacy Policy, Terms of Service).</p>
           <div class="input-group">
-            <input type="url" id="url-input" placeholder="https://example.com/terms">
-            <button class="btn btn-primary" id="analyze-url-btn">Analyze</button>
+            <input type="url" id="url-input" placeholder="https://example.com/terms" aria-label="Document URL Input">
+            <button class="btn btn-primary" id="analyze-url-btn" aria-label="Analyze URL">Analyze</button>
           </div>
         </div>
 
         <!-- PDF Tab -->
-        <div id="tab-pdf" class="tab-pane">
+        <div id="tab-pdf" class="tab-pane" role="tabpanel" aria-labelledby="btn-tab-pdf">
           <p class="instructions">Upload a PDF contract for analysis.</p>
-          <div id="drop-zone" class="drop-zone">
+          <div id="drop-zone" class="drop-zone" role="button" aria-label="Drop zone for PDF file" tabindex="0">
             <p>Drag and drop a PDF here or click to upload</p>
-            <input type="file" id="pdf-input" accept="application/pdf" class="hidden-file-input">
+            <input type="file" id="pdf-input" accept="application/pdf" class="hidden-file-input" aria-label="PDF File Upload Input">
           </div>
-          <p id="file-name-display" class="file-name hidden"></p>
-          <button class="btn btn-primary w-100 mt-3" id="analyze-pdf-btn" disabled>Analyze</button>
+          <p id="file-name-display" class="file-name hidden" aria-live="polite"></p>
+          <button class="btn btn-primary w-100 mt-3" id="analyze-pdf-btn" aria-label="Analyze uploaded PDF" disabled>Analyze</button>
         </div>
 
         <!-- Paste Text Tab -->
-        <div id="tab-paste" class="tab-pane">
+        <div id="tab-paste" class="tab-pane" role="tabpanel" aria-labelledby="btn-tab-paste">
           <p class="instructions">Paste raw contract text below.</p>
-          <textarea id="text-input" rows="20" placeholder="Paste contract text here..."></textarea>
-          <button class="btn btn-primary w-100 mt-3" id="analyze-text-btn">Analyze</button>
+          <textarea id="text-input" rows="20" placeholder="Paste contract text here..." aria-label="Paste Contract Textarea"></textarea>
+          <button class="btn btn-primary w-100 mt-3" id="analyze-text-btn" aria-label="Analyze pasted text">Analyze</button>
         </div>
       </div>
     </div>
 
     <!-- Results Section -->
-    <div id="results-section" class="results-section hidden">
+    <div id="results-section" class="results-section hidden" role="region" aria-label="Analysis Results" aria-live="polite">
       <div class="score-container">
         <h2>Risk Score</h2>
-        <div id="risk-score-value" class="risk-score">0</div>
+        <div id="risk-score-value" class="risk-score" aria-label="Risk Score Value">0</div>
         
-        <div class="risk-meter-bg">
+        <div class="risk-meter-bg" aria-hidden="true">
           <div id="risk-meter-fill" class="risk-meter-fill"></div>
         </div>
-        <div class="risk-meter-labels">
+        <div class="risk-meter-labels" aria-hidden="true">
           <span>Safe (0)</span>
           <span>Danger (100)</span>
         </div>
