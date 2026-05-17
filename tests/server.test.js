@@ -1,5 +1,3 @@
-const test = require('node:test');
-const assert = require('node:assert');
 const fetchUrl = require('../api/fetch-url.js');
 
 test('Serverless API responds with error on invalid action', async () => {
@@ -29,6 +27,6 @@ test('Serverless API responds with error on invalid action', async () => {
   
   await fetchUrl(req, res);
   
-  assert.strictEqual(statusCode, 400);
-  assert.strictEqual(jsonResult.error, 'Invalid action');
+  expect(statusCode).toBe(400);
+  expect(jsonResult.error).toBe('Invalid action');
 });
