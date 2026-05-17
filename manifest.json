@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "LexGuard Contract Analyzer",
+  "version": "1.0",
+  "description": "AI-powered legal contract analyzer that highlights risks in plain English.",
+  "permissions": [
+    "sidePanel",
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Open LexGuard"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  }
+}

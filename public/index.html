@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LexGuard - AI Contract Analyzer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Loading Overlay -->
+  <div id="loading-overlay" class="hidden">
+    <div class="spinner"></div>
+    <p>LexGuard is analyzing the contract...</p>
+  </div>
+
+  <header>
+    <div class="header-left">
+      <h1>⚖️ LexGuard</h1>
+      <p class="tagline">Know what you're signing</p>
+    </div>
+    <div class="header-right">
+      <button class="btn btn-outline" id="download-ext-btn">Download Extension</button>
+    </div>
+  </header>
+
+  <main class="container">
+
+
+    <!-- Analyzer Tabs Container -->
+    <div class="tabs-container">
+      <div class="tab-buttons">
+        <button class="tab-btn active" data-target="tab-url">URL</button>
+        <button class="tab-btn" data-target="tab-pdf">PDF</button>
+        <button class="tab-btn" data-target="tab-paste">Paste Text</button>
+      </div>
+
+      <div class="tab-content">
+        <!-- URL Tab -->
+        <div id="tab-url" class="tab-pane active">
+          <p class="instructions">Enter the URL of a legal document (e.g., Privacy Policy, Terms of Service).</p>
+          <div class="input-group">
+            <input type="url" id="url-input" placeholder="https://example.com/terms">
+            <button class="btn btn-primary" id="analyze-url-btn">Analyze</button>
+          </div>
+        </div>
+
+        <!-- PDF Tab -->
+        <div id="tab-pdf" class="tab-pane">
+          <p class="instructions">Upload a PDF contract for analysis.</p>
+          <div id="drop-zone" class="drop-zone">
+            <p>Drag and drop a PDF here or click to upload</p>
+            <input type="file" id="pdf-input" accept="application/pdf" class="hidden-file-input">
+          </div>
+          <p id="file-name-display" class="file-name hidden"></p>
+          <button class="btn btn-primary w-100 mt-3" id="analyze-pdf-btn" disabled>Analyze</button>
+        </div>
+
+        <!-- Paste Text Tab -->
+        <div id="tab-paste" class="tab-pane">
+          <p class="instructions">Paste raw contract text below.</p>
+          <textarea id="text-input" rows="20" placeholder="Paste contract text here..."></textarea>
+          <button class="btn btn-primary w-100 mt-3" id="analyze-text-btn">Analyze</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results Section -->
+    <div id="results-section" class="results-section hidden">
+      <div class="score-container">
+        <h2>Risk Score</h2>
+        <div id="risk-score-value" class="risk-score">0</div>
+        
+        <div class="risk-meter-bg">
+          <div id="risk-meter-fill" class="risk-meter-fill"></div>
+        </div>
+        <div class="risk-meter-labels">
+          <span>Safe (0)</span>
+          <span>Danger (100)</span>
+        </div>
+      </div>
+
+      <div class="summary-container">
+        <h3>Summary</h3>
+        <p id="risk-summary">Summary text will appear here.</p>
+      </div>
+
+      <div class="clauses-container">
+        <h3>Key Clauses</h3>
+        <div id="clauses-grid" class="clauses-grid">
+          <!-- Clause cards will be injected dynamically via JS -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="gemini.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

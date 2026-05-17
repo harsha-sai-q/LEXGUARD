@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LexGuard AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+  <div class="glass-bg"></div>
+
+  <header>
+    <div class="logo">
+      <div class="shield-container">
+        <span class="icon">🛡️</span>
+      </div>
+      <div class="title-meta">
+        <h1>LexGuard <span class="logo-badge">AI</span></h1>
+        <p class="subtitle">Real-time Legal Risk Scanner</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Mode Switcher -->
+    <div class="tabs-container">
+      <button id="tab-cloud" class="tab-btn active">☁️ Zero-Setup Cloud</button>
+      <button id="tab-local" class="tab-btn">🔑 Direct API Key</button>
+    </div>
+
+    <!-- Direct API Key Setup -->
+    <div id="setup-section" class="card hidden slide-up">
+      <h2>🔑 Direct API Key Setup</h2>
+      <p>Analyze directly in your browser using a custom Gemini API Key.</p>
+      <div class="input-group">
+        <input type="password" id="api-key-input" placeholder="Enter AIzaSy... key">
+      </div>
+      <button id="save-key-btn" class="btn secondary">Save API Key</button>
+      <p id="setup-status" class="status-msg"></p>
+    </div>
+
+    <!-- Active Scanner Interface -->
+    <div id="analyze-section" class="card slide-up">
+      <div class="scan-visual">
+        <div class="radar-ping"></div>
+        <span class="scan-emoji">📄</span>
+      </div>
+      <p class="scan-hint">Ready to scan current webpage contract, terms, or privacy policies.</p>
+      <button id="analyze-btn" class="btn primary pulse-btn">
+        <span class="btn-text">🛡️ Scan Webpage</span>
+        <span class="loader hidden"></span>
+      </button>
+    </div>
+
+    <!-- Results Interface -->
+    <div id="results-container" class="hidden slide-up">
+      <div class="results-card">
+        <div class="score-row">
+          <div class="score-circle">
+            <span id="risk-score-value">0</span>
+            <span class="score-label">Risk Index</span>
+          </div>
+          <div class="status-block">
+            <span id="risk-status" class="badge">Checking</span>
+            <p id="risk-summary-text" class="summary-p">Scanning...</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="clauses-header">
+        <h3>🚨 Detected Legal Risks</h3>
+        <span id="clause-count" class="pill-counter">0 risks</span>
+      </div>
+
+      <div id="risk-list" class="risk-list">
+        <!-- Dynamic cards injected here -->
+      </div>
+    </div>
+  </main>
+
+  <script src="sidepanel.js"></script>
+</body>
+</html>
