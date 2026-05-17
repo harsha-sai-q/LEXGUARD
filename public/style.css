@@ -497,3 +497,12 @@ textarea:focus {
     margin-top: 0.5rem;
   }
 }
+
+/* Accessibility: Visible, high-contrast focus indicators for inclusive design */
+:focus-visible {
+  outline: 3px solid var(--accent) !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 5px rgba(26, 115, 232, 0.4) !important;
+  border-radius: 4px;
+}
+

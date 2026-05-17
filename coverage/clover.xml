@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1779020241712" clover="3.2.0">
-  <project timestamp="1779020241712" name="All files">
+<coverage generated="1779021202825" clover="3.2.0">
+  <project timestamp="1779021202825" name="All files">
     <metrics statements="59" coveredstatements="24" conditionals="53" coveredconditionals="17" methods="2" coveredmethods="1" elements="114" coveredelements="42" complexity="0" loc="59" ncloc="59" packages="1" files="1" classes="1"/>
     <file name="fetch-url.js" path="C:\Users\Raja\Desktop\PROMPTWARS\lexguard-extension\api\fetch-url.js">
       <metrics statements="59" coveredstatements="24" conditionals="53" coveredconditionals="17" methods="2" coveredmethods="1"/>

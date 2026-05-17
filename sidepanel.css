@@ -500,3 +500,12 @@ input[type="password"]:focus {
 .hidden {
   display: none !important;
 }
+
+/* Accessibility: Visible, high-contrast focus indicators for inclusive design */
+:focus-visible {
+  outline: 3px solid var(--accent) !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 5px rgba(99, 102, 241, 0.4) !important;
+  border-radius: 4px;
+}
+
